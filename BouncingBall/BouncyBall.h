@@ -13,7 +13,8 @@ void updatePosition(spriteObject &circle) {
 
 
 void bouncyBall() {
-    graceEngine window("Test Window", 1280, 720);
+    graceEngine window("Bouncy Ball", 1280, 720);
+    sf::Clock clock;
 
     spriteObject* circle = new spriteObject("circle", "assets/textures/circle.png", {500, 500}, {64, 64});
     circle->setVelocity({4, 7});
@@ -21,11 +22,15 @@ void bouncyBall() {
     window.pushToQueue(circle);
 
     while (window.isRunning()) {
+        sf::Time elapsedTime = clock.restart();
         window.updateEvents();
 
         if (window.getEvent(sf::Event::KeyPressed)) {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                 window.stopRunning();
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::F1)) {
+                std::cout << "FPS: " << 1 / elapsedTime.asSeconds() << std::endl;
             }
         }
 

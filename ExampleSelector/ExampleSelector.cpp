@@ -4,13 +4,16 @@
 #include "../BlankWindow/BlankWindow.h"
 #include "../BouncingBall/BouncyBall.h"
 
-
 void openProgram(int programNumber) {
   switch (programNumber) {
     case 1:
       blankWindow();
+      break;
     case 2:
       bouncyBall();
+      break;
+    default:
+      std::cout << "Invalid Program Number: " << programNumber << ". Terminating session.";
   }
 }
 
